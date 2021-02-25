@@ -1,24 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="VideoCreateDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZA-7g-0zf">
+                                <rect key="frame" x="0.0" y="74" width="414" height="269"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="enter text here" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-wX-WLg">
+                                <rect key="frame" x="107" y="144" width="200" height="129"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="VIf-Uo-PYt"/>
+                                </constraints>
+                                <color key="textColor" red="0.1843137255" green="0.47843137250000001" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QyC-u7-WRt">
+                                <rect key="frame" x="40" y="365" width="334" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8J-EL-f9R">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
+                                        <state key="normal" image="play.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="playTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cwc-m4-ri1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiU-TY-XpJ">
+                                        <rect key="frame" x="167" y="0.0" width="167" height="50"/>
+                                        <state key="normal" image="pause.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="pauseTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5V-PA-W0j"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-cL-R7F">
+                                        <rect key="frame" x="334" y="0.0" width="0.0" height="50"/>
+                                        <state key="normal" image="stop.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="replayTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AMF-Yn-yJk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="v0O-N9-EYc"/>
+                                </constraints>
+                            </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="na9-Y4-qkg">
+                                <rect key="frame" x="0.0" y="351" width="414" height="4"/>
+                            </progressView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="na9-Y4-qkg" firstAttribute="trailing" secondItem="yZA-7g-0zf" secondAttribute="trailing" id="2BZ-Vf-6tJ"/>
+                            <constraint firstItem="yZA-7g-0zf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="2fO-vS-NTA"/>
+                            <constraint firstItem="na9-Y4-qkg" firstAttribute="top" secondItem="yZA-7g-0zf" secondAttribute="bottom" constant="8" id="8uG-HG-kt4"/>
+                            <constraint firstItem="y9R-wX-WLg" firstAttribute="centerX" secondItem="yZA-7g-0zf" secondAttribute="centerX" id="EGd-Le-4ED"/>
+                            <constraint firstItem="y9R-wX-WLg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="XjT-bG-0wC"/>
+                            <constraint firstItem="QyC-u7-WRt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Z4y-fx-LzG"/>
+                            <constraint firstItem="QyC-u7-WRt" firstAttribute="top" secondItem="na9-Y4-qkg" secondAttribute="bottom" constant="10" id="ag6-sp-rfz"/>
+                            <constraint firstItem="yZA-7g-0zf" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="cUE-wJ-RVL"/>
+                            <constraint firstItem="yZA-7g-0zf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="e6q-xy-Qdm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QyC-u7-WRt" secondAttribute="trailing" constant="40" id="h2N-fq-zOz"/>
+                            <constraint firstItem="na9-Y4-qkg" firstAttribute="leading" secondItem="yZA-7g-0zf" secondAttribute="leading" id="ivY-cb-aKd"/>
+                            <constraint firstItem="y9R-wX-WLg" firstAttribute="centerY" secondItem="yZA-7g-0zf" secondAttribute="centerY" id="ryP-pW-JuK"/>
+                            <constraint firstItem="yZA-7g-0zf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vTK-aN-gMY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnPause" destination="qiU-TY-XpJ" id="wcv-Ub-zen"/>
+                        <outlet property="btnPlay" destination="R8J-EL-f9R" id="PYg-xb-FCl"/>
+                        <outlet property="btnReplay" destination="3yR-cL-R7F" id="wpu-Sp-ozC"/>
+                        <outlet property="progressBar" destination="na9-Y4-qkg" id="fZg-3P-wlm"/>
+                        <outlet property="textView" destination="y9R-wX-WLg" id="Z8i-AB-2oL"/>
+                        <outlet property="videoView" destination="yZA-7g-0zf" id="H7k-7o-lkV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="97" y="38"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pause.fill" catalog="system" width="116" height="128"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="stop.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
