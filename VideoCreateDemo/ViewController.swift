@@ -35,6 +35,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var urls = [URL]()
     var playerItems = [AVPlayerItem]()
     var edittedText = ""
+    var isPaused = false
     
     
     //MARK:- Life Cycle Methods
@@ -132,11 +133,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func onTap(_ gesture: UIGestureRecognizer) {
       if (gesture.state == .ended) {
         /* action */
-        self.textView.isHidden = false
-        self.textView.text = edittedText
-        self.textView.becomeFirstResponder()
-        self.videoHasBeenTrimmed = true
+        
+        if self.isPaused {
+            self.textView.isHidden = false
+            self.textView.text = edittedText
+            self.textView.becomeFirstResponder()
+            self.videoHasBeenTrimmed = true
+        }
       }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text as NSString).rangeOfCharacter(from: CharacterSet.newlines).location == NSNotFound {
+            return true
+        }
+        textView.resignFirstResponder()
+        return false
     }
     
     private func setupAVPlayer() {
@@ -189,6 +201,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func pauseTapped(_ sender: UIButton) {
+        self.isPaused = true
         player.pause()
         self.interruptedTimeStamp = player.currentItem?.currentTime()
         print(self.interruptedTimeStamp ?? CMTime.zero)
